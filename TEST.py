@@ -39,22 +39,29 @@ print(f'''{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R
 {G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-''')
 dead = (C+"""▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬~𓆩𝑬𝑵𝑮-𝑺𝑨𝑱𝑱𝑨𝑫𓆪~▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬""")
 print(dead)
-access_token=input('  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] Entre PERSONAL ACCESS TOKEN : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
+access_token = input(
+    '  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] Entre PERSONAL ACCESS TOKEN : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
 
 # Set the authorization header
 headers = {'Authorization': f'token {access_token}'}
 
 # Follow a user
+
+
 def follow_user(username_to_follow):
-    response = requests.put(f"https://api.github.com/user/following/{username_to_follow}", headers=headers)
+    response = requests.put(
+        f"https://api.github.com/user/following/{username_to_follow}", headers=headers)
     if response.status_code == 204:
         print(f"Successfully followed {username_to_follow}.")
     else:
         print(f"Failed to follow {username_to_follow}.")
 
 # Unfollow a user
+
+
 def unfollow_user(username_to_unfollow):
-    response = requests.delete(f"https://api.github.com/user/following/{username_to_unfollow}", headers=headers)
+    response = requests.delete(
+        f"https://api.github.com/user/following/{username_to_unfollow}", headers=headers)
     if response.status_code == 204:
         print(f"Successfully unfollowed {username_to_unfollow}.")
     else:

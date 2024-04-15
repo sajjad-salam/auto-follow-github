@@ -39,27 +39,37 @@ print(f'''{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R}-{G}-{R
 dead = (C+"""▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬~𓆩𝑬𝑵𝑮-𝑺𝑨𝑱𝑱𝑨𝑫𓆪~▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬▭▬""")
 print(dead)
 # Your personal access token
-access_token=input('  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] Entre PERSONAL ACCESS TOKEN : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
+access_token = input(
+    '  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] Entre PERSONAL ACCESS TOKEN : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
 
 
+# friend_username = 'ProgrammerDATCH'
+friend_username = input(
+    '  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] ENTER USERNAME TO EXTRACT USERNAMES FROM IT  : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
 # Set the authorization header
 headers = {'Authorization': f'token {access_token}'}
 
-# Function to follow a user
-def follow_user(username):
-    response = requests.put(f"https://api.github.com/user/following/{username}", headers=headers)
-    if response.status_code == 204:
-        print(f"Successfully followed {username}.")
+# Function to get the list of users following a specific user
+
+
+def get_followers(username):
+    response = requests.get(
+        f"https://api.github.com/users/{username}/followers", headers=headers)
+    if response.status_code == 200:
+        followers = [user['login'] for user in response.json()]
+        return followers
     else:
-        print(f"Failed to follow {username}.")
+        print(f"Failed to fetch followers for user {username}.")
+        return []
 
-# Read the list of usernames from the text file
-usernames_file = 'users.txt'
-with open(usernames_file, 'r') as file:
-    usernames = [line.strip() for line in file if line.strip()]
 
-# Follow each user and report their departments
-for username in usernames:
-    follow_user(username)
-    print(f"Following {username}.")
-
+# Get the list of users following 'ProgrammerDATCH'
+followers = get_followers(friend_username)
+if followers:
+    with open('users.txt', 'w') as file:
+        for user in followers:
+            file.write(user + '\n')
+    print(
+        f"The list of users following {friend_username} has been saved to followers.txt.")
+else:
+    print(f"No users found that are following {friend_username}.")
