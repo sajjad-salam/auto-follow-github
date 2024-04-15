@@ -49,27 +49,29 @@ friend_username = input(
 # Set the authorization header
 headers = {'Authorization': f'token {access_token}'}
 
-# Function to get the list of users following a specific user
-
-
 def get_followers(username):
-    response = requests.get(
-        f"https://api.github.com/users/{username}/followers", headers=headers)
-    if response.status_code == 200:
-        followers = [user['login'] for user in response.json()]
-        return followers
-    else:
-        print(f"Failed to fetch followers for user {username}.")
-        return []
+    followers = []
+    page = 1
+    while True:
+        response = requests.get(
+            f"https://api.github.com/users/{username}/followers?page={page}&per_page=100", headers=headers)
+        if response.status_code == 200:
+            data = response.json()
+            if not data:
+                break
+            followers.extend([user['login'] for user in data])
+            page += 1
+        else:
+            print(f"Failed to fetch followers for user {username}.")
+            break
+    return followers
 
-
-# Get the list of users following 'ProgrammerDATCH'
 followers = get_followers(friend_username)
+
 if followers:
     with open('users.txt', 'w') as file:
         for user in followers:
             file.write(user + '\n')
-    print(
-        f"The list of users following {friend_username} has been saved to followers.txt.")
+    print(f"The list of users following {friend_username} has been saved to users.txt.")
 else:
     print(f"No users found that are following {friend_username}.")

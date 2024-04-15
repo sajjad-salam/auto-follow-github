@@ -37,12 +37,18 @@ Through this script you can automate github follow
 - Obtain a personal access token from GitHub with appropriate permissions.
 <br>
 see [DOC](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) to  create personal access token
+<br>
+
 - Ensure that you have a valid GitHub account.
 
 ## Important Note
 
 - Keep your personal access token secure and avoid sharing it.
-
+<br>
+and do not forget give access to your personal token to follow .
+like this 
+<br>
+<img src="screenshot/image.png" width="500"></img>
 ## Contributors
 
 - [ENG-SAJJAD](https://github.com/sajjad-salam)
