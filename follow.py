@@ -1,3 +1,4 @@
+import time
 import requests
 Z = '\x1b[1;31m'
 X = '\x1b[1;33m'
@@ -41,6 +42,8 @@ print(dead)
 # Your personal access token
 access_token = input(
     '  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] Entre PERSONAL ACCESS TOKEN : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
+tm = input(
+    '  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] SLEEEP ? EX(5) : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
 
 
 # Set the authorization header
@@ -67,3 +70,4 @@ with open(usernames_file, 'r') as file:
 for username in usernames:
     follow_user(username)
     print(f"Following {username}.")
+    time.sleep(tm)
