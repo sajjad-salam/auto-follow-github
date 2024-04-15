@@ -42,8 +42,8 @@ print(dead)
 # Your personal access token
 access_token = input(
     '  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] Entre PERSONAL ACCESS TOKEN : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
-tm = input(
-    '  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] SLEEEP ? EX(5) : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m')
+tm = int(input(
+    '  \x1b[38;5;117m{\x1b[1;32m•\x1b[38;5;117m}  \x1b[38;5;180m [+] SLEEEP ? EX(5) : )  \x1b[1;38;5;121m ๛   \x1b[38;5;117m'))
 
 
 # Set the authorization header
