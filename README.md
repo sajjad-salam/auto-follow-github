@@ -3,7 +3,11 @@ Through this script you can automate github follow
 <div style="display: flex; justify-content: center;">
     <img src="logo.gif" alt="logo">
 </div>
+<p align="center"><img src="https://raw.githubusercontent.com/khoa083/khoa/main/Khoa_ne/img/Rainbow.gif" width="100%"></p>
 
+&nbsp;<p align="center">
+  [![Spotify](https://novatorem.vercel.app/api/spotify?background_color=0d1117&border_color=ffffff)](https://open.spotify.com/user/omnitenebris)
+</p>
 ## Features
 
 - **Extract.py**: Extracts the usernames of GitHub users following a specific user and saves them to a file.
